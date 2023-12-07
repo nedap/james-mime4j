@@ -108,7 +108,7 @@ public class MboxIterator implements Iterable<CharBufferWrapper>, Closeable {
     private void decodeNextCharBuffer() throws CharConversionException {
         CoderResult coderResult = DECODER.decode(byteBuffer, mboxCharBuffer, endOfInputFlag);
         updateEndOfInputFlag();
-        mboxCharBuffer.flip();
+        ((java.nio.Buffer)mboxCharBuffer).flip();
         if (coderResult.isError()) {
             if (coderResult.isMalformed()) {
                 throw new CharConversionException("Malformed input!");

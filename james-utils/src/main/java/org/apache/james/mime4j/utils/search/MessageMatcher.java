@@ -213,7 +213,7 @@ public class MessageMatcher {
                 final char upperCase = Character.toUpperCase(next);
                 buffer.put(upperCase);
             }
-            buffer.flip();
+            ((java.nio.Buffer)buffer).flip();
         } else {
             buffer = CharBuffer.wrap(searchContent);
         }

@@ -46,7 +46,7 @@ class TextInputStream extends InputStream {
             .onMalformedInput(CodingErrorAction.REPLACE)
             .onUnmappableCharacter(CodingErrorAction.REPLACE);
         this.bbuf = ByteBuffer.allocate(bufferSize);
-        this.bbuf.flip();
+        ((java.nio.Buffer)this.bbuf).flip();
         this.cbuf = CharBuffer.wrap(s);
     }
 
@@ -56,7 +56,7 @@ class TextInputStream extends InputStream {
         if (result.isError()) {
             result.throwException();
         }
-        this.bbuf.flip();
+        ((java.nio.Buffer)this.bbuf).flip();
     }
 
     @Override
